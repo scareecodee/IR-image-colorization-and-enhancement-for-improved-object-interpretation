@@ -1,0 +1,53 @@
+# Configuration for Thermal Colorization Pipeline
+
+# Data
+data:
+  raw_dir: './data/raw'
+  processed_dir: './data/processed'
+  patch_size: 256
+  stride: 128
+  img_size: [256, 256]
+  batch_size: 8
+  num_workers: 4
+
+# Model
+model:
+  generator:
+    base_channels: 64
+    num_res_blocks: 9
+    use_semantic: true
+  discriminator:
+    base_channels: 64
+    n_layers: 3
+  super_resolution:
+    base_channels: 64
+    num_blocks: 8
+    scale_factor: 2
+
+# Training
+training:
+  g_lr: 0.0002
+  d_lr: 0.0002
+  num_epochs: 50
+  lr_step: 10
+  lr_gamma: 0.5
+  lambda_adv: 0.03
+  lambda_perceptual: 1.0
+  lambda_tv: 1.0
+  lambda_semantic: 0.5
+
+# Evaluation
+evaluation:
+  metrics: ['psnr', 'ssim', 'fid']
+  batch_size: 1
+
+# Inference
+inference:
+  tile_size: 256
+  overlap: 32
+
+# Logging
+logging:
+  log_dir: './logs'
+  checkpoint_dir: './checkpoints'
+  sample_interval: 5
