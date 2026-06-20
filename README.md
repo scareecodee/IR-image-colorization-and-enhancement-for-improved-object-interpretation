@@ -72,12 +72,6 @@ thermal_colorization_isro/
 │   ├── visualization.py
 │   └── geospatial.py
 │
-├── scripts/
-│   ├── prepare_data.py
-│   ├── train.py
-│   ├── evaluate.py
-│   └── inference.py
-│
 ├── notebooks/
 │   └── analysis.ipynb
 │
